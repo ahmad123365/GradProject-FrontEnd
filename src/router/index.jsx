@@ -1,18 +1,26 @@
 import React from 'react'
-import {Route, Routes} from "react-router-dom"
 import Dashboard from '../pages/Dashboard'
-import Layout from '../components/Layout'
+import Landing from '../pages/Landing'
+import {createBrowserRouter} from "react-router-dom";
+import Root from './Root'
+import ErrorPage from '../pages/Error/ErrorPage'
+  
+const Router = createBrowserRouter([
+	{
+	  element: <Root />,
+	  errorElement: <ErrorPage />,
+	  children: [
+		{
+		  path: "/",
+		  element: <Dashboard />,
+		},
+	  ],
+	},
+	{
+		path: "login",
+		element: <Landing />,
+	  },
+  ]);
 
-const Router = () => {
-	return (
-	<Layout> 
-		<Routes>
-			<Route path='/' element={<Dashboard />} >
-				
-			</Route>
-		</Routes>
-	</Layout>
-  )
-}
 
 export default Router

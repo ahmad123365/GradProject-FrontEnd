@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--main-bg-color: #FFF7D4;
+  }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+/* html {
+	height: 100%;
+} */
+body {
+	background-color: var(--main-bg-color);
 }

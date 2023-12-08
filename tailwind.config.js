@@ -12,7 +12,15 @@ module.exports = {
       secondary: "#EEC759",
       nearWhite: "#FFF7D4",
       ...colors
-    }
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'mdd': '820px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
   },
   plugins: [],
 }

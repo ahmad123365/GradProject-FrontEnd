@@ -1,10 +1,12 @@
 import React from 'react'
 import Dashboard from '../pages/Dashboard'
+import Profile from '../pages/Profile'
 import LogIn from '../pages/Landing/LogIn';
 import SignUp from '../pages/Landing/SignUp';
 import {createBrowserRouter} from "react-router-dom";
 import Root from './Root'
 import ErrorPage from '../pages/Error/ErrorPage'
+import Chat from '../pages/Chat';
   
 const Router = createBrowserRouter([
 	{
@@ -14,6 +16,14 @@ const Router = createBrowserRouter([
 		{
 		  path: "/",
 		  element: <Dashboard />,
+		},
+		{
+			path: "/chat",
+			element: <Chat />,
+		},
+		{
+			path: "/profile",
+			element: <Profile />,
 		},
 	  ],
 	},

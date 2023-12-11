@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from "../components/Layout/Navbar"
 import {Outlet} from "react-router-dom"
-import Footer from '../components/Layout/Footer'
+// import Footer from '../components/Layout/Footer'
 
 const Root = () => {
   return (
@@ -12,9 +12,9 @@ const Root = () => {
 		<main>
 			<Outlet />
 		</main>
-		<footer className='mt-auto'>
+		{/* <footer className='mt-auto'>
 			<Footer />
-		</footer>
+		</footer> */}
 	</body>
   )
 }

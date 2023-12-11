@@ -21,11 +21,12 @@ const Text = ({name, label, placeholder, onChange}) => (
 		</> 
 	)
 
-const Button = ({children, type}) => (
+const Button = ({children, type, border=true}) => (
 	<button
 		type={type}
-		className="w-full bg-[#00A9FF] my-1 py-1 border-2 rounded-xl text-[#fff] border-[#3C4856] font-semibold 
-		 hover:text-[#00A9FF] hover:bg-[#fff] transition-colors duration-300" 
+		className="w-full bg-[#00A9FF] my-1 py-2 px-2  rounded-xl text-[#fff] font-semibold 
+		 hover:text-[#00A9FF] hover:bg-[#fff] transition-colors duration-300 border-[#3C4856]"
+		style={border ? {borderWidth: '2px'} : {}}
 	>{children}</button>
 )
 

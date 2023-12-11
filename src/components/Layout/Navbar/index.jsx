@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import {ShoppingCartOutlined} from "@ant-design/icons"
+import { NavLink } from 'react-router-dom'
+import { Tooltip } from "antd"
 
 const Navbar = () => {
   return (
-	<div className='w-full min-h-[2.5rem] bg-[#00A9FF] flex justify-around shadow-xl'>
+	<div className='w-full min-h-[2.5rem] bg-[#00A9FF] flex justify-around items-center shadow-xl'>
 		  <img
 		  	src={process.env.PUBLIC_URL + "/images/logo-horizental.png"}
 			alt="logo"
@@ -22,11 +22,13 @@ const Navbar = () => {
 			to="/about">About</NavLink>
 			  
 		  </ul>
-		  <div>
-		  <ShoppingCartOutlined />
-		  <ShoppingCartOutlined />
-		  <ShoppingCartOutlined />
-		  </div>
+		<div>
+		  <Tooltip title="Go to profile">
+		  	<p className='w-10 h-10 rounded-[50%] bg-[#9FF68B] flex justify-center items-center mr-5 text-[#3C4856] font-[630] text-[1.5rem] cursor-pointer hover:brightness-90 transition-all duration-300'>
+			  <span className='mb-1'>A</span>
+		  	</p>
+		  </Tooltip>
+		</div>
 
 	</div>
   )

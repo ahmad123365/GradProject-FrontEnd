@@ -1,5 +1,38 @@
 import Cookies from 'js-cookie';
 import actionTypes  from '../actionTypes';
+
+const initialState = {
+	token: "",
+	loading: false,
+	authenticated: false,
+	user: {},
+	errorMsg: null,
+	varifyOtp: null,
+	resetPassword: null,
+	
+}
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default (state = initialState, action) => {
+	switch (action.type) {
+		case actionTypes.REGISTER_SUCCESS:
+			console.log(action.payload)
+			Cookies.set('Authentication', {
+				token: action.payload.token,
+				user: action.payload.data.user,
+				});
+			return {
+				...state,
+				token: action.payload.token,
+				user: action.payload.data.user,
+				loading: false,
+				authenticated: true,
+			}
+		default: 
+			return state
+	}
+}
+
 // const initialState = {
 //   token: localStorage.getItem('g-token'),
 //   isLoading: false,
@@ -11,17 +44,6 @@ import actionTypes  from '../actionTypes';
 //   resetPassword: null,
 // };
 
-const initialState = {
-	token: "",
-	isLoading: false,
-	isAuthenticated: false,
-	user: {},
-	errorMsg: null,
-	varifyOtp: null,
-	resetPassword: null,
-}
-
-// eslint-disable-next-line import/no-anonymous-default-export
 // export default (state = initialState, action) => {
 //   switch (action.type) {
 //     case actionTypes.USER_LOADING:
@@ -101,18 +123,3 @@ const initialState = {
 //   }
 // };
 
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (state = initialState, action) => {
-	switch (action.type) {
-		case actionTypes.REGISTER:
-			console.log(action.payload)
-			Cookies.set('Authentication', {
-				token: action.payload.token,
-				user: action.payload.user,
-				});
-			return 
-		default: 
-			return state
-	}
-}

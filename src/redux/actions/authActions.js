@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import axios from "axios";
-// import actionTypes from "./../actionTypes"
+import actionTypes from '../actionTypes';
+
 
 export const tokenConfig = () => {
 	// Get token from localstorage
@@ -32,14 +33,16 @@ export const register = (body) => dispatch => {
 	
 	axios.post("/api/v1/users/signup", body, config)
 		.then(res => {
-			console.log('res', res)
 			dispatch({
-				// type: actionTypes.REGISTER,
+				type: actionTypes.REGISTER_SUCCESS,
 				payload: res.data
 			})
 		})
 		.catch(err => {
-			console.log(err)
+			dispatch({
+				type: actionTypes.REGISTER_FAILED,
+				payload: err
+			})
 		})
 
 } 

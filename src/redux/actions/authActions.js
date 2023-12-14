@@ -1,0 +1,45 @@
+import Cookies from 'js-cookie';
+import axios from "axios";
+// import actionTypes from "./../actionTypes"
+
+export const tokenConfig = () => {
+	// Get token from localstorage
+	const initCookie = Cookies.get();
+	const token = initCookie?.token;
+  
+	// Headers
+	const config = {
+	  headers: {
+		'Content-type': 'application/json',
+	  },
+	};
+  
+	// If token, add to headers
+	if (token) {
+	  config.headers['x-auth-token'] = token;
+	}
+  
+	return config;
+};
+  
+
+export const register = (body) => dispatch => {
+	const config = {
+		headers: {
+		  'Content-type': 'application/json',
+		},
+	};
+	
+	axios.post("/api/v1/users/signup", body, config)
+		.then(res => {
+			console.log('res', res)
+			dispatch({
+				// type: actionTypes.REGISTER,
+				payload: res.data
+			})
+		})
+		.catch(err => {
+			console.log(err)
+		})
+
+} 

@@ -16,11 +16,12 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.REGISTER_SUCCESS:
+		case actionTypes.SIGNIN_SUCCESS:
 			console.log(action.payload)
 			Cookies.set('Authentication', {
 				token: action.payload.token,
 				user: action.payload.data.user,
-				});
+			});
 			return {
 				...state,
 				token: action.payload.token,

@@ -2,6 +2,11 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import actionTypes from '../actionTypes';
 
+const CONFIG = {
+	headers: {
+	  'Content-type': 'application/json',
+	},
+};
 
 export const tokenConfig = () => {
 	// Get token from localstorage
@@ -25,13 +30,8 @@ export const tokenConfig = () => {
   
 
 export const register = (body) => dispatch => {
-	const config = {
-		headers: {
-		  'Content-type': 'application/json',
-		},
-	};
 	
-	axios.post("/api/v1/users/signup", body, config)
+	axios.post("/api/v1/users/signup", body, CONFIG)
 		.then(res => {
 			dispatch({
 				type: actionTypes.REGISTER_SUCCESS,
@@ -41,6 +41,24 @@ export const register = (body) => dispatch => {
 		.catch(err => {
 			dispatch({
 				type: actionTypes.REGISTER_FAILED,
+				payload: err
+			})
+		})
+
+} 
+
+export const SignIn = (body) => dispatch => {
+	
+	axios.post("/api/v1/users/login", body, CONFIG)
+		.then(res => {
+			dispatch({
+				type: actionTypes.SIGNIN_SUCCESS,
+				payload: res.data
+			})
+		})
+		.catch(err => {
+			dispatch({
+				type: actionTypes.SIGNIN_FAILED,
 				payload: err
 			})
 		})

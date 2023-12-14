@@ -64,3 +64,21 @@ export const SignIn = (body) => dispatch => {
 		})
 
 } 
+
+export const sendForgotPwdEmail = (body) => dispatch => {
+	
+	axios.post("/api/v1/users/forgotPassword", body, CONFIG)
+		.then(res => {
+			dispatch({
+				type: actionTypes.SEND_FORGOT_PWD_EMAIL,
+				payload: null
+			})
+		})
+		.catch(err => {
+			dispatch({
+				type: actionTypes.SIGNIN_FAILED,
+				payload: err
+			})
+		})
+
+} 

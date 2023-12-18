@@ -11,7 +11,7 @@ const CONFIG = {
 export const tokenConfig = () => {
 	// Get token from localstorage
 	const initCookie = Cookies.get();
-	const token = initCookie?.token;
+	const token = initCookie?.Authentication;
   
 	// Headers
 	const config = {
@@ -39,6 +39,7 @@ export const register = (body) => dispatch => {
 			})
 		})
 		.catch(err => {
+			console.log(err)
 			dispatch({
 				type: actionTypes.REGISTER_FAILED,
 				payload: err
@@ -57,12 +58,12 @@ export const SignIn = (body) => dispatch => {
 			})
 		})
 		.catch(err => {
+			console.log(err)
 			dispatch({
 				type: actionTypes.SIGNIN_FAILED,
-				payload: err
+				payload: err.response.data.message
 			})
 		})
-
 } 
 
 export const sendForgotPwdEmail = (body) => dispatch => {
@@ -75,6 +76,7 @@ export const sendForgotPwdEmail = (body) => dispatch => {
 			})
 		})
 		.catch(err => {
+			console.log(err)
 			dispatch({
 				type: actionTypes.SIGNIN_FAILED,
 				payload: err
@@ -82,3 +84,12 @@ export const sendForgotPwdEmail = (body) => dispatch => {
 		})
 
 } 
+
+
+export const checkToken = () => dispatch => {
+	const cookie = Cookies.get()
+	dispatch({
+		type: actionTypes.CHECK_TOKEN,
+		payload: cookie?.Authentication
+	})
+}

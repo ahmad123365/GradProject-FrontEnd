@@ -13,7 +13,7 @@ const actionTypes = {
 	CREATE_BOOK: "CREATE_BOOK",
 	UPDATE_BOOK: "UPDATE_BOOK",
 	DELETE_BOOK: "DELETE_BOOK",
-	
+	CLEAR_BOOK: "CLEAR_BOOK",
 }
 
 export default actionTypes;

@@ -2,12 +2,6 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import actionTypes from '../actionTypes';
 
-const CONFIG = {
-	headers: {
-	  'Content-type': 'application/json',
-	},
-};
-
 export const tokenConfig = () => {
 	// Get token from localstorage
 	const initCookie = Cookies.get();
@@ -22,16 +16,15 @@ export const tokenConfig = () => {
   
 	// If token, add to headers
 	if (token) {
-	  config.headers['x-auth-token'] = token;
+	  config.headers['token'] =  `Bearer ${token}`;
 	}
-  
 	return config;
 };
   
 
 export const register = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/signup", body, CONFIG)
+	axios.post("/api/v1/users/signup", body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.REGISTER_SUCCESS,
@@ -50,7 +43,7 @@ export const register = (body) => dispatch => {
 
 export const SignIn = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/login", body, CONFIG)
+	axios.post("/api/v1/users/login", body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.SIGNIN_SUCCESS,
@@ -68,7 +61,7 @@ export const SignIn = (body) => dispatch => {
 
 export const sendForgotPwdEmail = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/forgotPassword", body, CONFIG)
+	axios.post("/api/v1/users/forgotPassword", body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.SEND_FORGOT_PWD_EMAIL,

@@ -7,6 +7,8 @@ import {createBrowserRouter} from "react-router-dom";
 import Root from './Root'
 import ErrorPage from '../pages/Error/ErrorPage'
 import Chat from '../pages/Chat';
+import ForgotPassword from '../pages/Landing/ForgotPassword';
+import Control from './Control';
   
 const Router = createBrowserRouter([
 	{
@@ -14,7 +16,7 @@ const Router = createBrowserRouter([
 	  errorElement: <ErrorPage />,
 	  children: [
 		{
-		  path: "/",
+		  path: "/home",
 		  element: <Dashboard />,
 		},
 		{
@@ -34,7 +36,14 @@ const Router = createBrowserRouter([
 	{
 		path: "signup",
 		element: <SignUp />,
+	},	{
+		path: "forgot-password",
+		element: <ForgotPassword />,
 	},
+	{
+		path: "/",
+		element: <Control />
+	}
   ]);
 
 

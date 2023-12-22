@@ -9,7 +9,6 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX= /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
 // const REGISTER_URL = '/register';
 
-
 const SignUp = () => {
 	const dispatch = useDispatch() 
 	const userRef = useRef();
@@ -51,7 +50,6 @@ const SignUp = () => {
 		const body = { name: user, email: email, password: pwd, passwordConfirm: matchPwd }
 		dispatch(register(body))
 	}
-
 	
   return (
 	<div className='w-full flex justify-center items-center h-[100vh] bg-[#00A9FF]'>
@@ -121,7 +119,7 @@ const SignUp = () => {
 					</p>
 					<Button 
 						type='submit'
-						disabled={!validEmail}
+						disabled={!validEmail || !validPwd || !validMatch || !user }
 					>Sign up</Button>
 				</Group>
 				<div className='flex justify-between px-6 mt-1 mb-4 w-full'>

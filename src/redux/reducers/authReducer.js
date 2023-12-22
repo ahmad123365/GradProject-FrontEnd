@@ -6,28 +6,46 @@ const initialState = {
 	loading: false,
 	authenticated: false,
 	user: {},
+	signInStatus: "",
 	errorMsg: null,
 	varifyOtp: null,
 	resetPassword: null,
-	
+	failCount: 0
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.REGISTER_SUCCESS:
-			console.log(action.payload)
-			Cookies.set('Authentication', {
-				token: action.payload.token,
-				user: action.payload.data.user,
-				});
+		case actionTypes.SIGNIN_SUCCESS:
+			Cookies.set('Authentication', action.payload.token)
+
 			return {
 				...state,
 				token: action.payload.token,
 				user: action.payload.data.user,
 				loading: false,
 				authenticated: true,
+				signInStatus: "success",
 			}
+		case actionTypes.REGISTER_FAILED:
+		case actionTypes.SIGNIN_FAILED:
+			return {
+				...state, 
+				authenticated: false,
+				signInStatus: "fail",
+				errorMsg: action.payload,
+				failCount: state.failCount += 1, 
+			}
+		case actionTypes.CHECK_TOKEN: 
+			if (action.payload) {
+				return {
+					...state, 
+					authenticated: true,
+					signInStatus: "success",
+				}
+			}
+			return state
 		default: 
 			return state
 	}

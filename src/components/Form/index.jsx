@@ -9,8 +9,8 @@ const Group = ({ children, onSubmit}) => (
 	</form>
 )
 const Text = ({name, label, placeholder, onChange, onFocus, onBlur, required=false, value="", ref=null, redOutline}) => (
-		<>
-		{label? <label for={name} >{label}</label> : null}
+		<div className="flex flex-col">
+		{label? <label for={name} className="text-[#3C4856] " >{label}</label> : null}
 		<input
 			type="text"
 			name={name}
@@ -23,7 +23,7 @@ const Text = ({name, label, placeholder, onChange, onFocus, onBlur, required=fal
 			value={value}
 			ref={ref}
 		/>
-		</> 
+		</div> 
 	)
 
 	const Password = ({name, label, placeholder, onChange, onFocus, onBlur, required=false, value="", ref=null, redOutline}) => (

@@ -1,9 +1,8 @@
 import React from 'react'
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons"
+import { DeleteOutlined, EditOutlined, ShoppingCartOutlined } from "@ant-design/icons"
 import { message, Popconfirm } from 'antd'
 import {useDispatch} from "react-redux"
 import { deleteBook, getAllBooks } from '../../redux/actions/booksAction'
-
 
 const BookCard = ({name, author, id, setBookId=() => {}, handleEditModal=() => {}}) => {
 	const dispatch = useDispatch()
@@ -32,7 +31,7 @@ const BookCard = ({name, author, id, setBookId=() => {}, handleEditModal=() => {
 				<h1 className='font-semibold text-[1rem] px-2 text-[#3C4856] opacity-70 '>{author}</h1>
 			</div>
 			<div className='flex w-full '> 
-				<span className='flex-1 flex items-center justify-center py-4 px-2 hover:text-red-500 hover:shadow-inner transition-all duration-300 cursor-pointer select-none'><DeleteOutlined /></span>
+				<span className='flex-1 flex items-center justify-center py-4 px-2 hover:text-blue-500 hover:shadow-inner transition-all duration-300 cursor-pointer select-none'><ShoppingCartOutlined /></span>
 					<span
 						className='flex-1 flex items-center justify-center py-4 px-2 hover:text-green-500 hover:shadow-inner transition-all duration-300 cursor-pointer select-none'
 						onClick={handleEditModal}

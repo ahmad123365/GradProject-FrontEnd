@@ -14,6 +14,7 @@ const actionTypes = {
 	UPDATE_BOOK: "UPDATE_BOOK",
 	DELETE_BOOK: "DELETE_BOOK",
 	CLEAR_BOOK: "CLEAR_BOOK",
+	BUY_BOOK: "BUY_BOOK",
 }
 
 export default actionTypes;

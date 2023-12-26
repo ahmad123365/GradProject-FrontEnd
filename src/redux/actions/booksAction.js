@@ -63,3 +63,14 @@ export const deleteBook = (id) => dispatch => {
 	})
 	.catch(err => console.log(err))
 }
+
+export const buyBook = (body) => dispatch => {
+	axios.patch(`/api/v1/books/buy`, tokenConfig())
+	.then (res => {
+		dispatch({
+			type: actionTypes.BUY_BOOK,
+			payload: res.data.data
+		})
+	})
+	.catch(err => console.log(err))
+}

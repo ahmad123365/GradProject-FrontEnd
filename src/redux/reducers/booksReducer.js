@@ -32,6 +32,11 @@ export default (state=initialState, action) => {
 				book: action.payload,
 				books: state.books.map(entry => entry.id === action.payload.id ? action.payload : entry )
 			}
+		case actionTypes.BUY_BOOK:
+			return {
+				...state,
+				book: {...state.book, inStock: action.payload.inStock}
+			}
 		case actionTypes.DELETE_BOOK:
 			return {
 				...state,

@@ -83,6 +83,6 @@ export const checkToken = () => dispatch => {
 	const cookie = Cookies.get()
 	dispatch({
 		type: actionTypes.CHECK_TOKEN,
-		payload: cookie?.Authentication
+		payload: cookie
 	})
 }

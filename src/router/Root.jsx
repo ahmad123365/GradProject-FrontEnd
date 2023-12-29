@@ -19,7 +19,6 @@ const Root = () => {
 	const pagePath = window.location.href.split("/")[window.location.href.split("/").length - 1]
 	
 	useEffect(() => {
-		console.log(authenticated)
 		if (!authenticated) navigate("/login")
 		else navigate(`/${pagePath}`)
 	}, [authenticated])

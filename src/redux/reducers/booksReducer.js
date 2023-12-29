@@ -37,11 +37,16 @@ export default (state=initialState, action) => {
 				...state,
 				book: {...state.book, inStock: action.payload.inStock}
 			}
+			case actionTypes.REFUND_BOOK:
+			return {
+				...state,
+				book: {...state.book, inStock: action.payload.inStock}
+			}
 		case actionTypes.DELETE_BOOK:
 			return {
 				...state,
 				book: {},
-				books: state.books.filter(entry => entry.id !== action.payload.id)
+				books: state.books.filter(entry => entry.id !== action.payload)
 			}
 		default:
 			return state

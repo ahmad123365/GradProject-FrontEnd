@@ -15,6 +15,7 @@ const actionTypes = {
 	DELETE_BOOK: "DELETE_BOOK",
 	CLEAR_BOOK: "CLEAR_BOOK",
 	BUY_BOOK: "BUY_BOOK",
+	REFUND_BOOK: "REFUND_BOOK",
 }
 
 export default actionTypes;

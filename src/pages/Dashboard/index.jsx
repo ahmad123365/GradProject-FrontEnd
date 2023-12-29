@@ -12,12 +12,10 @@ const Dashboard = () => {
 	const { books } = useSelector(state => state.books)
 	const [bookId, setBookId] = useState(null)
 
-	console.log(books)
 	
 	useEffect(() => {
 		dispatch(getAllBooks())
 	}, [dispatch])
-	console.log(bookId)
 
 	const handleEditModal = () => {
 		setOpenEditModal(!openEditModal)
@@ -33,16 +31,8 @@ const Dashboard = () => {
 						onClick={()=> setOpenCreateModal(!openCreateModal)}
 					>Add Book</button>
 				</div>
-			<div className='grid justify-items-center gap-y-5 grid-flow-dense mdd:grid-cols-2 xl:grid-cols-3 my-4 '>
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	  
-				<BookCard name={"The Jungle Book"} author="Rudyard Kipling" />	 
-				{books?.map(book => <BookCard name={book?.name} author={book?.author} id={book?.id} handleEditModal={handleEditModal} setBookId={setBookId} /> )} 
+			<div className='grid justify-items-center gap-y-5 grid-flow-dense mdd:grid-cols-2 xl:grid-cols-3 my-4 '> 
+				{books?.map(book => <BookCard book={book}  handleEditModal={handleEditModal} setBookId={setBookId} /> )} 
 			</div>
 	</div>
 	<CreateBookForm open={openCreateModal} setOpen={setOpenCreateModal} />

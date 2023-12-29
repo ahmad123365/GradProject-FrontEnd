@@ -1,6 +1,7 @@
 import actionTypes from "../actionTypes"
 import axios from "axios"
 import { tokenConfig } from "./authActions"
+import { message } from "antd"
 
 export const getAllBooks = () => dispatch => {
 	axios.get("/api/v1/books", tokenConfig())
@@ -58,19 +59,23 @@ export const deleteBook = (id) => dispatch => {
 	.then (res => {
 		dispatch({
 			type: actionTypes.DELETE_BOOK,
-			payload: null
+			payload: id
 		})
+		message.success('Book deleted successfully');
 	})
-	.catch(err => console.log(err))
+	.catch(err => message.error(err.response.data.message) )
 }
 
 export const buyBook = (body) => dispatch => {
-	axios.patch(`/api/v1/books/buy`, tokenConfig())
+	axios.post(`/api/v1/books/buy`, body, tokenConfig())
+
 	.then (res => {
+		console.log(body)
 		dispatch({
 			type: actionTypes.BUY_BOOK,
 			payload: res.data.data
 		})
+		message.success(`You have bought ${body.book}.`)
 	})
-	.catch(err => console.log(err))
+		.catch(err => message.error(err.response.data.message) )
 }

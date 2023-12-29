@@ -15,6 +15,7 @@ export default (state=initialState, action) => {
 				books: action.payload
 			}
 		case actionTypes.GET_ONE_BOOK:
+		case actionTypes.CLEAR_BOOK:
 			return {
 				...state,
 				book: action.payload
@@ -31,11 +32,21 @@ export default (state=initialState, action) => {
 				book: action.payload,
 				books: state.books.map(entry => entry.id === action.payload.id ? action.payload : entry )
 			}
+		case actionTypes.BUY_BOOK:
+			return {
+				...state,
+				book: {...state.book, inStock: action.payload.inStock}
+			}
+			case actionTypes.REFUND_BOOK:
+			return {
+				...state,
+				book: {...state.book, inStock: action.payload.inStock}
+			}
 		case actionTypes.DELETE_BOOK:
 			return {
 				...state,
 				book: {},
-				books: state.books.filter(entry => entry.id !== action.payload.id)
+				books: state.books.filter(entry => entry.id !== action.payload)
 			}
 		default:
 			return state

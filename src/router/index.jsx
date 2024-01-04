@@ -9,6 +9,7 @@ import ErrorPage from '../pages/Error/ErrorPage'
 import Chat from '../pages/Chat';
 import ForgotPassword from '../pages/Landing/ForgotPassword';
 import Control from './Control';
+import Book from '../pages/Book';
   
 const Router = createBrowserRouter([
 	{
@@ -26,6 +27,10 @@ const Router = createBrowserRouter([
 		{
 			path: "/profile",
 			element: <Profile />,
+		},
+		{
+			path: "/book/:id",
+			element: <Book />,
 		},
 	  ],
 	},

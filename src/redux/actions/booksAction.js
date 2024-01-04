@@ -79,3 +79,10 @@ export const buyBook = (body) => dispatch => {
 	})
 		.catch(err => message.error(err.response.data.message) )
 }
+
+export const setBook = (body) => dispatch => { 
+	dispatch({
+		type: actionTypes.SET_BOOK,
+		payload: body
+	})
+}

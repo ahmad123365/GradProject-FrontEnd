@@ -16,6 +16,7 @@ export default (state=initialState, action) => {
 			}
 		case actionTypes.GET_ONE_BOOK:
 		case actionTypes.CLEAR_BOOK:
+		case actionTypes.SET_BOOK:
 			return {
 				...state,
 				book: action.payload

@@ -4,7 +4,7 @@ import { message, Popconfirm, Tooltip } from 'antd'
 import {useDispatch, useSelector} from "react-redux"
 import { buyBook, deleteBook, getAllBooks } from '../../redux/actions/booksAction'
 
-const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}}) => {
+const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}, onClick=() =>{}}) => {
 	const dispatch = useDispatch()
 	const {user} = useSelector(state => state.authentication)
 
@@ -18,7 +18,7 @@ const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}}) => {
 		dispatch(buyBook({ book: book?.name, email: user.email }))
 	}
 
-	console.log(book)
+	
   return (
 	<div className='flex w-[17rem] shadow-2xl group rounded-md cursor-pointer' onClick={() => setBookId(book?.id)}>
 		<div className='w-1/2 overflow-hidden rounded-l-md'>
@@ -27,15 +27,23 @@ const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}}) => {
 				className='h-full w-full object-cover brightness-90 scale-[1.03] group-hover:scale-[1.07] group-hover:brightness-100 transition-all duration-500'
 				src={book?.imageCover}
 				alt='Book Cover'
+				onClick={onClick}
 			  />
 			</span>
 		</div>
 		<div className='w-1/2 flex flex-col justify-between'>
-			<div>			
-					<h1 className='font-semibold text-[1.2rem] px-2 text-[#3C4856] mt-1'>{book?.name.length < 32 ? book?.name : <Tooltip title={book?.name}><span>{book?.name.slice(0,30) + "..."}</span></Tooltip> }</h1>
-				<h1 className='font-semibold text-[1rem] px-2 text-[#3C4856] opacity-70 '>{book?.author}</h1>
+				<div className='flex flex-col justify-between h-full'>
+					<div className=''>
+						<h1 className='font-semibold text-[1rem] px-2 text-[#3C4856] mt-1'>{book?.name.length < 32 ? book?.name : <Tooltip title={book?.name}><span>{book?.name.slice(0,30) + "..."}</span></Tooltip> }</h1>
+						<h1 className='font-semibold text-[.8rem] px-2 text-[#3C4856] opacity-70 '>{book?.author}</h1>
+					</div>	
+					<div className='flex-1 flex flex-col justify-end'>
+						<h1 className='font-semibold text-[.8rem] px-2 text-[#3C4856] opacity-70 '>Price: {book?.price -1 + .99}$</h1>
+						<h1 className='font-semibold text-[.8rem] px-2 text-[#3C4856] opacity-70'>In Stock: {book?.inStock}</h1>
+						<h1 className='font-semibold text-[.8rem] px-2 text-[#3C4856] opacity-70'>Rating: {book?.rating?.toFixed(2)}</h1>
+					</div>
 			</div>
-			<div className='flex w-full '> 
+			<div className='flex w-full'> 
 			<Popconfirm
 						title="Buy Book"
 						description="Are you sure you want to buy this book?"

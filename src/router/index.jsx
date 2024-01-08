@@ -6,9 +6,10 @@ import SignUp from '../pages/Landing/SignUp';
 import {createBrowserRouter} from "react-router-dom";
 import Root from './Root'
 import ErrorPage from '../pages/Error/ErrorPage'
-import Chat from '../pages/Chat';
+import Cart from '../pages/Cart';
 import ForgotPassword from '../pages/Landing/ForgotPassword';
 import Control from './Control';
+import Book from '../pages/Book';
   
 const Router = createBrowserRouter([
 	{
@@ -20,12 +21,16 @@ const Router = createBrowserRouter([
 		  element: <Dashboard />,
 		},
 		{
-			path: "/chat",
-			element: <Chat />,
+			path: "/cart",
+			element: <Cart />,
 		},
 		{
 			path: "/profile",
 			element: <Profile />,
+		},
+		{
+			path: "/book/:id",
+			element: <Book />,
 		},
 	  ],
 	},

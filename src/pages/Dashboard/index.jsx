@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import BookCard from '../../components/BookCard'
 import { useSelector, useDispatch } from "react-redux"
-import {getAllBooks} from "./../../redux/actions/booksAction" 
+import {useNavigate} from "react-router-dom"
+import {getAllBooks, setBook} from "./../../redux/actions/booksAction" 
 import CreateBookForm from '../../containers/CreateBookForm'
 import UpdateBookForm from '../../containers/UpdateBookForm'
 
 const Dashboard = () => {
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [openCreateModal, setOpenCreateModal] = useState(false)
 	const [openEditModal, setOpenEditModal] = useState(false)
@@ -32,7 +34,7 @@ const Dashboard = () => {
 					>Add Book</button>
 				</div>
 			<div className='grid justify-items-center gap-y-5 grid-flow-dense mdd:grid-cols-2 xl:grid-cols-3 my-4 '> 
-				{books?.map(book => <BookCard book={book}  handleEditModal={handleEditModal} setBookId={setBookId} /> )} 
+					{books?.map(book => <BookCard key={book?.id} book={book} handleEditModal={handleEditModal} setBookId={setBookId} onClick={() => { dispatch(setBook(book)); navigate(`/book/${book?.id}`)}} /> )} 
 			</div>
 	</div>
 	<CreateBookForm open={openCreateModal} setOpen={setOpenCreateModal} />

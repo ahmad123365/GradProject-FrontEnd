@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
 			}
 		case actionTypes.CHECK_TOKEN: 
 			if (action.payload.Authentication) {
-				const user = JSON.parse(action.payload.User)
+				const user =action.payload?.User?.email ?  JSON.parse(action.payload.User) : {}
 				return {
 					...state, 
 					authenticated: true,

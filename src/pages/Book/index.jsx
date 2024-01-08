@@ -1,12 +1,10 @@
 import React from 'react'
-import {useSelector, useDispatch} from "react-redux"
+import {useSelector, } from "react-redux"
 
 
 const Book = () => {
-	const dispatch = useDispatch()
-	const {book} = useSelector(state => state.books)
+	const { book } = useSelector(state => state.books)
 
-	console.log(book)
 	return (
 		<div className='w-[95%] md:w-[70%] lg:w-[65%] xl:w-[60%] mx-auto mt-9'>
 				<div className='w-full flex gap-[2rem] flex-col md:flex-row'>

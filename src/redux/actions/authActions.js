@@ -2,9 +2,8 @@ import Cookies from 'js-cookie';
 import actionTypes from '../actionTypes';
 import api from '../../utils/api';
 
-
 export const register = (body) => dispatch => {
-	
+	load()
 	api.post("/api/v1/users/signup", body)
 		.then(res => {
 			dispatch({
@@ -19,11 +18,10 @@ export const register = (body) => dispatch => {
 				payload: err
 			})
 		})
-
 } 
 
 export const SignIn = (body) => dispatch => {
-	
+	load()
 	api.post("/api/v1/users/login", body, )
 		.then(res => {
 			dispatch({
@@ -59,6 +57,13 @@ export const sendForgotPwdEmail = (body) => dispatch => {
 
 } 
 
+export const logout = () => dispatch => {
+	dispatch({
+		type: actionTypes.LOGOUT
+	})
+	window.location.reload()
+}
+
 
 export const checkToken = () => dispatch => {
 	const cookie = Cookies.get()
@@ -66,4 +71,13 @@ export const checkToken = () => dispatch => {
 		type: actionTypes.CHECK_TOKEN,
 		payload: cookie
 	})
+}
+
+
+export const load = () => dispatch => { 
+	dispatch({ type: actionTypes.LOAD })
+}
+
+export const stopLoad = () => dispatch => { 
+	dispatch({ type: actionTypes.STOP_LOAD })
 }

@@ -1,17 +1,19 @@
 import api from "../../utils/api"
 import actionTypes from "../actionTypes"
-
 import { message } from "antd"
 
+
 export const getAllBooks = () => dispatch => {
+	dispatch({type: actionTypes.LOAD})
 	api.get("/api/v1/books")
 	.then (res => {
 		dispatch({
 			type: actionTypes.GET_ALL_BOOKS,
 			payload: res.data.data.books
 		})
+		dispatch({type: actionTypes.STOP_LOAD})
 	})
-	.catch(err => console.log(err))
+	.catch(err => { dispatch({type: actionTypes.STOP_LOAD});  console.log(err)})
 }
 
 export const getBook = (id) => dispatch => {
@@ -70,7 +72,6 @@ export const buyBook = (body) => dispatch => {
 	api.post(`/api/v1/books/buy`, body)
 
 	.then (res => {
-		console.log(body)
 		dispatch({
 			type: actionTypes.BUY_BOOK,
 			payload: res.data.data

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {useSelector, useDispatch} from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { checkToken } from '../redux/actions/authActions'
+import Loading from '../components/Layout/Loading'
 
 const Control = () => {
 	const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const Control = () => {
 	}, [authenticated])
 
   return (
-	<div></div>
+	<Loading />
   )
 }
 

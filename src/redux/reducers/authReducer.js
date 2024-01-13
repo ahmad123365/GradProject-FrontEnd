@@ -40,6 +40,7 @@ export default (state = initialState, action) => {
 				...state, 
 				authenticated: false,
 				signInStatus: "fail",
+				loading: false,
 				errorMsg: action.payload,
 				failCount: state.failCount += 1, 
 			}
@@ -54,6 +55,19 @@ export default (state = initialState, action) => {
 				}
 			}
 			return state
+		case actionTypes.LOGOUT: 
+			Cookies.remove("Authentication")
+			return state
+		case actionTypes.LOAD: 
+			return {
+				...state,
+				loading: true
+			}	
+		case actionTypes.STOP_LOAD: 
+		return {
+			...state,
+			loading: false
+		}
 		default: 
 			return state
 	}

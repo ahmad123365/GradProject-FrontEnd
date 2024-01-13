@@ -1,11 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Tooltip } from "antd"
 import { ShoppingCartOutlined, HomeOutlined, QuestionOutlined } from "@ant-design/icons"
-
+import { logout } from '../../../redux/actions/authActions'
+import { useDispatch } from 'react-redux'
 
 const Navbar = () => {
-	
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()	
+
   return (
 	<div className='w-full min-h-[2.5rem] bg-[#00A9FF] flex justify-around items-center shadow-xl'>
 		 <Tooltip title="Home"><NavLink to='/home'><img
@@ -20,17 +24,23 @@ const Navbar = () => {
 			  <NavLink className='w-[4rem] h-full leading-[65px] text-center select-none text-xl text-white hover:leading-[55px] hover:border-b-4 transition-all duration-300 '
 			style={({ isActive }) => (isActive ? { color: "#9FF68B", borderBottomWidth: "4px", borderColor: "#9FF68B"} : {})}
 			to="/cart"><ShoppingCartOutlined /></NavLink>
-			  <NavLink className='w-[4rem] h-full leading-[65px] text-center select-none text-xl text-white hover:leading-[55px] hover:border-b-4 transition-all duration-300 '
+			  {/* <NavLink className='w-[4rem] h-full leading-[65px] text-center select-none text-xl text-white hover:leading-[55px] hover:border-b-4 transition-all duration-300 '
 			style={({ isActive }) => (isActive ? { color: "#9FF68B", borderBottomWidth: "4px", borderColor: "#9FF68B"} : {})}
-			to="/about"><QuestionOutlined /></NavLink>
+			to="/about"><QuestionOutlined /></NavLink> */}
 			  
 		  </ul>
 		<div>
-		  <Tooltip title="Go to profile">
-		  	<NavLink to="/profile" className='w-10 h-10 rounded-[50%] bg-[#9FF68B] flex justify-center items-center mr-5 text-[#3C4856] font-[630] text-[1.5rem] cursor-pointer hover:brightness-90 transition-all duration-300'>
-			  <span className='mb-1'>A</span>
-		  	</NavLink>
-		  </Tooltip>
+		  {/* <Tooltip title="Go to profile"> */}
+			  <div className='w-10 h-10 rounded-[50%] bg-[#9FF68B] flex justify-center items-center mr-5 text-[#3C4856] font-[630] text-[1.5rem] cursor-pointer  transition-all duration-300
+							  relative group'>
+			  <span className='mb-1 hover:brightness-90 '>A</span>
+				  <div className='w-[120px] bg-white absolute top-[110%] right-1 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 hover:brightness-100
+			  					  group-hover:shadow-lg	py-1'>
+					<button className='text-[1rem] p-2 text-left hover:bg-gray-100 w-full' onClick={() => navigate("/profile")}>Go to Profile</button>					
+					<button className='text-[1rem] p-2 text-left hover:bg-gray-100 w-full' onClick={()=> dispatch(logout())}>Sign Out</button>									
+				  </div>
+		  	</div>
+		  {/* </Tooltip> */}
 		</div>
 
 	</div>

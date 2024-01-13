@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 // import { InfoCircleOutlined } from "@ant-design/icons"
 import { useDispatch } from "react-redux";
 import { register } from '../../redux/actions/authActions';
+import Loading from '../../components/Layout/Loading';
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX= /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/
@@ -53,6 +54,7 @@ const SignUp = () => {
 	
   return (
 	<div className='w-full flex justify-center items-center h-[100vh] bg-[#00A9FF]'>
+		<Loading />
 		<div className='w-[90%] sm:w-[70%] md:w-[50%] lg:w-[35%] h-[100vh] flex flex-col items-center px-5 pt-10 md:pt-20 lg:pt-30 gap-10 sm:gap-15 '>
 			  <img src={process.env.PUBLIC_URL + '/logo.png' } alt="Logo" className='w-[10rem]' />
 			<div className='bg-[#D6F4FF] w-full rounded-md flex flex-col items-center px-8'>

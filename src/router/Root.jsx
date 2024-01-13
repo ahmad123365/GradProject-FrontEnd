@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import {useSelector, useDispatch} from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { checkToken } from '../redux/actions/authActions'
+import Loading from '../components/Layout/Loading'
 // import Footer from '../components/Layout/Footer'
 
 const Root = () => {
@@ -24,6 +25,7 @@ const Root = () => {
 	}, [authenticated])
   return (
 	<body className='flex flex-col h-[100svh] '>
+		<Loading />
 		<header>
 			<Navbar />
 		</header>

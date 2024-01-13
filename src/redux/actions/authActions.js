@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-import axios from "axios";
 import actionTypes from '../actionTypes';
 import api from '../../utils/api';
 export const tokenConfig = () => {
@@ -61,7 +60,7 @@ export const SignIn = (body) => dispatch => {
 
 export const sendForgotPwdEmail = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/forgotPassword", body, tokenConfig())
+	api.post("/api/v1/users/forgotPassword", body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.SEND_FORGOT_PWD_EMAIL,

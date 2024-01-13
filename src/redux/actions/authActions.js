@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import actionTypes from '../actionTypes';
 
+const PROXY = "https://book-store-dxv0.onrender.com"
 export const tokenConfig = () => {
 	// Get token from localstorage
 	const initCookie = Cookies.get();
@@ -24,7 +25,7 @@ export const tokenConfig = () => {
 
 export const register = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/signup", body, tokenConfig())
+	axios.post(`${PROXY}/api/v1/users/signup`, body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.REGISTER_SUCCESS,
@@ -43,7 +44,7 @@ export const register = (body) => dispatch => {
 
 export const SignIn = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/login", body, tokenConfig())
+	axios.post(`${PROXY}/api/v1/users/login`, body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.SIGNIN_SUCCESS,
@@ -61,7 +62,7 @@ export const SignIn = (body) => dispatch => {
 
 export const sendForgotPwdEmail = (body) => dispatch => {
 	
-	axios.post("/api/v1/users/forgotPassword", body, tokenConfig())
+	axios.post(`${PROXY}/api/v1/users/forgotPassword`, body, tokenConfig())
 		.then(res => {
 			dispatch({
 				type: actionTypes.SEND_FORGOT_PWD_EMAIL,

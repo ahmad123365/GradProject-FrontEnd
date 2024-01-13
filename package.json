@@ -35,7 +35,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://book-store-dxv0.onrender.com",
+  
   "browserslist": {
     "production": [
       ">0.2%",

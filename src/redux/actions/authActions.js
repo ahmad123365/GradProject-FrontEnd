@@ -1,29 +1,11 @@
 import Cookies from 'js-cookie';
 import actionTypes from '../actionTypes';
 import api from '../../utils/api';
-export const tokenConfig = () => {
-	// Get token from localstorage
-	const initCookie = Cookies.get();
-	const token = initCookie?.Authentication;
-  
-	// Headers
-	const config = {
-	  headers: {
-		'Content-type': 'application/json',
-	  },
-	};
-  
-	// If token, add to headers
-	if (token) {
-	  config.headers['token'] =  `Bearer ${token}`;
-	}
-	return config;
-};
-  
+
 
 export const register = (body) => dispatch => {
 	
-	api.post("/api/v1/users/signup", body, tokenConfig())
+	api.post("/api/v1/users/signup", body)
 		.then(res => {
 			dispatch({
 				type: actionTypes.REGISTER_SUCCESS,
@@ -60,7 +42,7 @@ export const SignIn = (body) => dispatch => {
 
 export const sendForgotPwdEmail = (body) => dispatch => {
 	
-	api.post("/api/v1/users/forgotPassword", body, tokenConfig())
+	api.post("/api/v1/users/forgotPassword", body)
 		.then(res => {
 			dispatch({
 				type: actionTypes.SEND_FORGOT_PWD_EMAIL,

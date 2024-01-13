@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {useDispatch} from "react-redux"
-import { createBook } from '../redux/actions/booksAction'
+import { createBook } from '../redux/api/booksAction'
 
 
 export default function CreateBookForm({open, setOpen}) {

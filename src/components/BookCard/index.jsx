@@ -2,7 +2,7 @@ import React from 'react'
 import { DeleteOutlined, EditOutlined, ShoppingCartOutlined } from "@ant-design/icons"
 import { message, Popconfirm, Tooltip } from 'antd'
 import {useDispatch, useSelector} from "react-redux"
-import { buyBook, deleteBook, getAllBooks } from '../../redux/actions/booksAction'
+import { buyBook, deleteBook, getAllBooks } from '../../redux/api/booksAction'
 
 const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}, onClick=() =>{}}) => {
 	const dispatch = useDispatch()

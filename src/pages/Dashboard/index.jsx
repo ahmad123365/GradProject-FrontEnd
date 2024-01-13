@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import BookCard from '../../components/BookCard'
 import { useSelector, useDispatch } from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {getAllBooks, setBook} from "./../../redux/actions/booksAction" 
+import {getAllBooks, setBook} from "./../../redux/api/booksAction" 
 import CreateBookForm from '../../containers/CreateBookForm'
 import UpdateBookForm from '../../containers/UpdateBookForm'
 

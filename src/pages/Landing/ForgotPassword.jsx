@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { Group, Text, Button,  } from '../../components/Form'
 import { useDispatch } from "react-redux";
-import { sendForgotPwdEmail } from '../../redux/actions/authActions';
+import { sendForgotPwdEmail } from '../../redux/api/authActions';
 import Loading from '../../components/Layout/Loading';
 
 const EMAIL_REGEX= /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/

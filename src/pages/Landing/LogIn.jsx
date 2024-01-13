@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { Group, Text, Button, Password } from '../../components/Form'
 import { useDispatch, useSelector } from "react-redux";
-import { SignIn } from '../../redux/actions/authActions';
+import { SignIn } from '../../redux/api/authActions';
 import { useNavigate } from "react-router-dom"
 import Loading from '../../components/Layout/Loading';
 

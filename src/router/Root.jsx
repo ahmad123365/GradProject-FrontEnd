@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom"
 import { useEffect } from 'react'
 import {useSelector, useDispatch} from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { checkToken } from '../redux/actions/authActions'
+import { checkToken } from '../redux/api/authActions'
 import Loading from '../components/Layout/Loading'
 // import Footer from '../components/Layout/Footer'
 

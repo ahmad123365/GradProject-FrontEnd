@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Tooltip } from "antd"
 import { ShoppingCartOutlined, HomeOutlined, QuestionOutlined } from "@ant-design/icons"
-import { logout } from '../../../redux/actions/authActions'
+import { logout } from '../../../redux/api/authActions'
 import { useDispatch } from 'react-redux'
 
 const Navbar = () => {

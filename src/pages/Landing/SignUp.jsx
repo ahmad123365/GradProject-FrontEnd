@@ -3,7 +3,7 @@ import { Group, Text, Button, Password } from '../../components/Form'
 import { NavLink } from 'react-router-dom';
 // import { InfoCircleOutlined } from "@ant-design/icons"
 import { useDispatch } from "react-redux";
-import { register } from '../../redux/actions/authActions';
+import { register } from '../../redux/api/authActions';
 import Loading from '../../components/Layout/Loading';
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;

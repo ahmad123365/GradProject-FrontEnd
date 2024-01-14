@@ -5,12 +5,14 @@ import Cookies from 'js-cookie';
 const initCookie = Cookies.get();
 const token = initCookie?.Authentication;
 
+const config = {
+  Accept: "application/json",
+}
+if (token) config.token = `Bearer ${token}`
+
 let api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  headers: {
-    Accept: "application/json",
-    ...(token && ({token: `Bearer ${token}`}))
-  }
+  headers: config
 })
 
 api.interceptors.request.use(request => {

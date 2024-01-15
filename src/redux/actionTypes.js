@@ -18,11 +18,12 @@ const actionTypes = {
 	CLEAR_BOOK: "CLEAR_BOOK",
 	BUY_BOOK: "BUY_BOOK",
 	REFUND_BOOK: "REFUND_BOOK",
-
+	CHANGE_USER_BALANCE:"CHANGE_USER_BALANCE",
 
 	// Loading
 	LOAD: "LOAD",
 	STOP_LOAD: "STOP_LOAD",
+	
 }
 
 export default actionTypes;

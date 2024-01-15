@@ -57,6 +57,15 @@ export default (state = initialState, action) => {
 		case actionTypes.LOGOUT: 
 			Cookies.remove("Authentication")
 			return state
+		case actionTypes.CHANGE_USER_BALANCE: {
+			return {
+				...state,
+				user: {
+					...state?.user,
+					balance: action.payload?.userBalance,
+				}
+			}
+		}
 		case actionTypes.LOAD: 
 			return {
 				...state,

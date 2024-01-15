@@ -70,10 +70,13 @@ export const deleteBook = (id) => dispatch => {
 
 export const buyBook = (body) => dispatch => {
 	api.post(`/api/v1/books/buy`, body)
-
 	.then (res => {
 		dispatch({
 			type: actionTypes.BUY_BOOK,
+			payload: res.data.data
+		})
+		dispatch({
+			type: actionTypes.CHANGE_USER_BALANCE,
 			payload: res.data.data
 		})
 		message.success(`You have bought ${body.book}.`)

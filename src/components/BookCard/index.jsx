@@ -1,6 +1,6 @@
 import React from 'react'
 import { DeleteOutlined, EditOutlined, ShoppingCartOutlined } from "@ant-design/icons"
-import { message, Popconfirm, Tooltip } from 'antd'
+import { Popconfirm, Tooltip } from 'antd'
 import {useDispatch, useSelector} from "react-redux"
 import { buyBook, deleteBook, getAllBooks } from '../../redux/api/booksAction'
 
@@ -17,7 +17,6 @@ const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}, onClick=(
 	const handleBuy = () => {
 		dispatch(buyBook({ book: book?.name, email: user.email }))
 	}
-
 	
   return (
 	<div className='flex w-[17rem] shadow-2xl group rounded-md cursor-pointer' onClick={() => setBookId(book?.id)}>
@@ -43,7 +42,7 @@ const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}, onClick=(
 						<h1 className='font-semibold text-[.8rem] px-2 text-[#3C4856] opacity-70'>Rating: {book?.rating?.toFixed(2)}</h1>
 					</div>
 			</div>
-			<div className='flex w-full'> 
+			{user?.role === 'admin' ? <div className='flex w-full'> 
 			<Popconfirm
 						title="Buy Book"
 						description="Are you sure you want to buy this book?"
@@ -72,7 +71,20 @@ const BookCard = ({book, setBookId=() => {}, handleEditModal=() => {}, onClick=(
 						className='flex-1 flex items-center justify-center py-4 px-2 hover:text-red-500 hover:shadow-inner transition-all duration-300 cursor-pointer select-none'	
 					><DeleteOutlined /></span>
 					</Popconfirm>
-			</div>
+				</div> : 
+					<div className='flex flex-row-reverse w-full'>
+							<Popconfirm
+						title="Buy Book"
+						description="Are you sure you want to buy this book?"
+						onConfirm={handleBuy}
+						okText="Yes"
+						cancelText="No"
+					>
+					<span className='w-1/3 flex items-center justify-center py-4 px-2 hover:text-blue-500 hover:shadow-inner transition-all duration-300 cursor-pointer select-none'>
+						<ShoppingCartOutlined />
+					</span>
+					</Popconfirm>
+					</div>}
 		</div>
 	</div>
   )

@@ -19,9 +19,9 @@ export default function UpdateBookForm({open, setOpen, id}) {
 	
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('submitted')
+
 		const body = {name, author, price,genre, publishYear, rating, description}
-		console.log(body)
+
 		dispatch(updateBook(id ,body))
 		// setOpen(false)
 	}

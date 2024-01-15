@@ -27,7 +27,7 @@ const LogIn = () => {
     }, [email, pwd, signInStatus])
 
 	useEffect(() => {
-		console.log(signInStatus)
+	
 		if (signInStatus === "success") navigate("/home")
 	}, [signInStatus])
 	

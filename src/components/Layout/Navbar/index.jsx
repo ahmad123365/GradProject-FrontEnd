@@ -9,7 +9,7 @@ const Navbar = () => {
 	const {user} = useSelector(state=> state.authentication)
   const dispatch = useDispatch()
   const navigate = useNavigate()	
-	console.log(user)
+	
   return (
 	<div className='w-full min-h-[2.5rem] bg-[#00A9FF] flex justify-around items-center shadow-xl'>
 		 <Tooltip title="Home"><NavLink to='/home'><img

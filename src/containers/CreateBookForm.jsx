@@ -19,9 +19,9 @@ export default function CreateBookForm({open, setOpen}) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('submitted')
+
 		const body = {name, author, price,genre, publishYear, rating, description}
-		console.log(body)
+
 		dispatch(createBook(body))
 		// setOpen(false)
 	}

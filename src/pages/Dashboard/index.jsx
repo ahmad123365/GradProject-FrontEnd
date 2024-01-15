@@ -21,7 +21,7 @@ const Dashboard = () => {
 
 	const handleEditModal = () => {
 		setOpenEditModal(!openEditModal)
-		console.log("asdasdasd")
+
 	}
   return (
 		<>

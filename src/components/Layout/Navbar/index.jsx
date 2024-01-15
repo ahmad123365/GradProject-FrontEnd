@@ -3,13 +3,13 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Tooltip } from "antd"
 import { ShoppingCartOutlined, HomeOutlined, QuestionOutlined } from "@ant-design/icons"
 import { logout } from '../../../redux/api/authActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Navbar = () => {
-
+	const {user} = useSelector(state=> state.authentication)
   const dispatch = useDispatch()
   const navigate = useNavigate()	
-
+	console.log(user)
   return (
 	<div className='w-full min-h-[2.5rem] bg-[#00A9FF] flex justify-around items-center shadow-xl'>
 		 <Tooltip title="Home"><NavLink to='/home'><img
@@ -29,18 +29,17 @@ const Navbar = () => {
 			to="/about"><QuestionOutlined /></NavLink> */}
 			  
 		  </ul>
-		<div>
-		  {/* <Tooltip title="Go to profile"> */}
+		<div className='flex gap-4 items-center'>
+				{user?.balance? <p> Balance: {user?.balance}$</p> : null}
 			  <div className='w-10 h-10 rounded-[50%] bg-[#9FF68B] flex justify-center items-center mr-5 text-[#3C4856] font-[630] text-[1.5rem] cursor-pointer  transition-all duration-300
 							  relative group'>
-			  <span className='mb-1 hover:brightness-90 '>A</span>
+			  <span className='mb-1 hover:brightness-90 '>{user?.name?.substr(0,1)}</span>
 				  <div className='w-[120px] bg-white absolute top-[110%] right-1 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 hover:brightness-100
 			  					  group-hover:shadow-lg	py-1'>
 					<button className='text-[1rem] p-2 text-left hover:bg-gray-100 w-full' onClick={() => navigate("/profile")}>Go to Profile</button>					
 					<button className='text-[1rem] p-2 text-left hover:bg-gray-100 w-full' onClick={()=> dispatch(logout())}>Sign Out</button>									
 				  </div>
 		  	</div>
-		  {/* </Tooltip> */}
 		</div>
 
 	</div>

@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.REGISTER_SUCCESS:
 		case actionTypes.SIGNIN_SUCCESS:
-			console.log("USERRRRRR", action.payload)
+	
 			Cookies.set('Authentication', action.payload.token)
 			Cookies.set("User", JSON.stringify(action.payload.data.user))
 
@@ -30,7 +30,6 @@ export default (state = initialState, action) => {
 				...state,
 				token: action.payload.token,
 				user: action.payload.data.user,
-				loading: false,
 				authenticated: true,
 				signInStatus: "success",
 			}
@@ -40,7 +39,6 @@ export default (state = initialState, action) => {
 				...state, 
 				authenticated: false,
 				signInStatus: "fail",
-				loading: false,
 				errorMsg: action.payload,
 				failCount: state.failCount += 1, 
 			}

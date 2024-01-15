@@ -3,15 +3,17 @@ import actionTypes from '../actionTypes';
 import api from '../../utils/api';
 
 export const register = (body) => dispatch => {
-	load()
+	dispatch({type: actionTypes.LOAD})
 	api.post("/api/v1/users/signup", body)
 		.then(res => {
 			dispatch({
 				type: actionTypes.REGISTER_SUCCESS,
 				payload: res.data
 			})
+			dispatch({type: actionTypes.STOP_LOAD})
 		})
 		.catch(err => {
+			dispatch({type: actionTypes.STOP_LOAD})
 			console.log(err)
 			dispatch({
 				type: actionTypes.REGISTER_FAILED,
@@ -21,7 +23,7 @@ export const register = (body) => dispatch => {
 } 
 
 export const SignIn = (body) => dispatch => {
-	load()
+	dispatch({type: actionTypes.LOAD})
 	api.post("/api/v1/users/login", body, )
 		.then(res => {
 			dispatch({
@@ -30,6 +32,7 @@ export const SignIn = (body) => dispatch => {
 			})
 		})
 		.catch(err => {
+			dispatch({type: actionTypes.STOP_LOAD})
 			console.log(err)
 			dispatch({
 				type: actionTypes.SIGNIN_FAILED,
